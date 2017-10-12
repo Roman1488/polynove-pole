@@ -12,7 +12,7 @@
     );
     $posts = query_posts($args);
     if (count($posts) > 0) : ?>
-    <div class="head-page-post">
+    <div class="head-page-post content-wrapper">
             <?php foreach ($posts as $post) : ?>
                 <article class="news-item">
                     <div class="row">

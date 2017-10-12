@@ -116,4 +116,50 @@ function new_excerpt_more($more) {
     return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Read the full article...</a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+add_action('init', 'register_discography_post_types');
+function register_discography_post_types(){
+    register_post_type('discography', array(
+        'label'  => 'discography',
+        'labels' => array(
+            'name'               => 'Дискографія', // основное название для типа записи
+            'singular_name'      => 'Дискографія', // название для одной записи этого типа
+            'add_new'            => 'Додати новий диск', // для добавления новой записи
+            'add_new_item'       => 'Додати новий диск', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'          => 'Редагувати диск', // для редактирования типа записи
+            'new_item'           => 'Новий диск', // текст новой записи
+            'view_item'          => 'Переглянути диск', // для просмотра записи этого типа.
+            'search_items'       => 'Пошук диску', // для поиска по этим типам записи
+            'not_found'          => 'Не знайдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Не знайдено в корзині', // если не было найдено в корзине
+            'parent_item_colon'  => '', // для родителей (у древовидных типов)
+            'menu_name'          => 'Дискографія', // название меню
+        ),
+        'menu_icon'           => 'dashicons-format-audio',
+        'description'         => '',
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true, // показывать ли в меню адмнки
+        'show_in_admin_bar'   => true, // по умолчанию значение show_in_menu
+        'show_in_nav_menus'   => true,
+        'show_in_rest'        => false, // добавить в REST API. C WP 4.7
+        'hierarchical'        => false,
+        'supports'            => array('title','editor','thumbnail','revisions'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies'          => array('post_tag', 'category'),
+        'has_archive'         => false,
+        'rewrite'             => true,
+        'query_var'           => true,
+    ) );
+}
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title' 	=> 'Головні налаштування теми',
+        'menu_title'	=> 'Налаштування теми',
+        'menu_slug' 	=> 'theme-general-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
+}
 ?>

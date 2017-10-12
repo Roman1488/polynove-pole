@@ -39,6 +39,7 @@ gulp.task('scripts', function() {
     return gulp.src([
         'libs/tether/dist/js/tether.min.js',
         'libs/bootstrap/dist/js/bootstrap.min.js',
+        'libs/owl.carousel/dist/owl.carousel.min.js',
         'js/scripts.js'
         ])
         .pipe(concat('scripts.js'))

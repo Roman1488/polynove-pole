@@ -3,7 +3,7 @@
     <?php $currentPostId = get_the_ID(); ?>
     <?php
     while ( have_posts() ) : the_post(); ?>
-    <div class="head-page-post">
+    <div class="head-page-post content-wrapper">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                 <?php echo get_the_post_thumbnail(get_the_ID(), 'post-thumbnail') ?>
