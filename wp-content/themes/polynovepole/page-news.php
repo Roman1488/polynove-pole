@@ -4,6 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
+<?php get_template_part('audio-template');  ?>
 <div class="container">
     <?php
     $args = array(
@@ -17,17 +18,21 @@
                 <article class="news-item">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                            <a href="<?php echo get_post_permalink($post->ID); ?>">
-                                <?php echo get_the_post_thumbnail($post->ID, 'post-thumbnail') ?>
+                            <a class="news-item__link image-border" href="<?php echo get_post_permalink($post->ID); ?>">
+                                <?php the_post_thumbnail('post-thumbnail', array('class' => 'post-image')); ?>
                             </a>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8">
-                            <a href="<?php echo get_post_permalink($post->ID); ?>">
-                                <h3 class="desc-title"><?php echo $post->post_title; ?></h3>
-                            </a>
-                            <section class="head-page-post__desc">
+                            <div class="title-wrap">
+                                <a href="<?php echo get_post_permalink($post->ID); ?>">
+                                    <h3 class="post-title"><?php echo $post->post_title; ?></h3>
+                                </a>
+                                <p class="post-date"><?php echo get_the_date('d.m.Y', $post->ID); ?></p>
+                            </div>
+                            <section class="news-item__excerpt">
                                 <?php echo $post->post_excerpt; ?>
                             </section>
+                            <a href="<?php echo get_post_permalink($post->ID); ?>" class="read-more">Read more<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </article>

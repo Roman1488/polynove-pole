@@ -40,6 +40,7 @@ gulp.task('scripts', function() {
         'libs/tether/dist/js/tether.min.js',
         'libs/bootstrap/dist/js/bootstrap.min.js',
         'libs/owl.carousel/dist/owl.carousel.min.js',
+        'libs/wow/dist/wow.min.js',
         'js/scripts.js'
         ])
         .pipe(concat('scripts.js'))
@@ -51,11 +52,10 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('images', function() {
-    return gulp.src('img/*.*')
+    return gulp.src('../img/*.*')
         .pipe(imagemin())
         .pipe(gulp.dest('../img'))
         .pipe(notify({ message: 'Images have been optimized' }))
-        .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('browser-sync', function() {
@@ -65,11 +65,11 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('watch', ['browser-sync', 'styles', 'scripts', 'fonts', 'images'], function() {
+gulp.task('watch', ['browser-sync', 'styles', 'scripts'], function() {
     gulp.watch('scss/**/*.scss', ['styles']);
     gulp.watch('js/*.js', ['scripts']);
-    gulp.watch('img/*', ['images']);
-    gulp.watch('fonts/*', ['fonts']);
+    /*gulp.watch('img/!*', ['images']);*/
+    /*gulp.watch('fonts/!*', ['fonts']);*/
 });
 
 gulp.task('default', ['watch']);

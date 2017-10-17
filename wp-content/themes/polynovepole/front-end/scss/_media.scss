@@ -1,0 +1,87 @@
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .open-menu-btn {
+    display: none;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+}
+@media (max-width: 410px) {
+  .social-sidebar {
+    .close-social-sidebar{
+      margin-left: 10px;
+    }
+    &__item,
+    .close-social-sidebar {
+      margin-right: 0;
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .social-sidebar-wrapper {
+    max-height: 30px;
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 768px) {
+  .search-form {
+    order: 1;
+  }
+  .head-page-post{
+    .wp-post-image {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .search-form__input {
+    padding: 5px 15px 5px 5px;
+  }
+  .input-wrapper {
+    .search-icon{
+      top: 8px;
+    }
+  }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) {
+  .menu-wrap {
+    display: none;
+  }
+  .open-menu-btn {
+    display: inline-block;
+  }
+  .discography-list {
+    flex-direction: row;
+
+    &__item {
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199px) {
+}

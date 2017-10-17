@@ -16,7 +16,8 @@
   ],
   "devDependencies": {
     "components-font-awesome": "^4.7.0",
-    "bootstrap": "v4.0.0-alpha.6"
+    "bootstrap": "v4.0.0-alpha.6",
+    "wow": "wowjs#^1.1.2"
   },
   "dependencies": {
     "components-font-awesome": "^4.7.0",
