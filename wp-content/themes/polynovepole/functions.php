@@ -162,4 +162,179 @@ if( function_exists('acf_add_options_page') ) {
         'redirect'		=> false
     ));
 }
+
+
+if ( ! function_exists( 'gllr_template_content_custom' ) ) {
+    function gllr_template_content_custom() {
+        global $post, $wp_query, $request, $gllr_options;
+
+        if ( get_query_var( 'paged' ) ) {
+            $paged = get_query_var( 'paged' );
+        } elseif ( get_query_var( 'page' ) ) {
+            $paged = get_query_var( 'page' );
+        } else {
+            $paged = 1;
+        }
+
+        $permalink    = get_permalink();
+        $per_page = get_option( 'posts_per_page' );
+
+        if ( substr( $permalink, strlen( $permalink ) -1 ) != "/" ) {
+            if ( strpos( $permalink, "?" ) !== false ) {
+                $permalink = substr( $permalink, 0, strpos( $permalink, "?" ) -1 ) . "/";
+            } else {
+                $permalink .= "/";
+            }
+        }
+        $args = array(
+            'post_type'         => $gllr_options['post_type_name'],
+            'post_status'       => 'publish',
+            'orderby'           => $gllr_options['album_order_by'],
+            'order'             => $gllr_options['album_order'],
+            'posts_per_page'    => $per_page,
+            'paged'             => $paged
+        );
+
+        if ( get_query_var( 'gallery_categories' ) ) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'gallery_categories',
+                    'field'    => 'slug',
+                    'terms'    => get_query_var( 'gallery_categories' ),
+                )
+            );
+        }
+
+        $second_query = new WP_Query( $args );
+        $request = $second_query->request; ?>
+        <div class="gallery_wrap row">
+
+            <?php if ( $second_query->have_posts() ) { ?>
+
+                <div class="gl__post-title-wrap col-2">
+                    <?php
+                    /* get width and height for image_size_album */
+                    if ( 'album-thumb' != $gllr_options['image_size_album'] ) {
+                        $width  = absint( get_option( $gllr_options['image_size_album'] . '_size_w' ) );
+                        $height = absint( get_option( $gllr_options['image_size_album'] . '_size_h' ) );
+                    } else {
+                        $width  = $gllr_options['custom_size_px']['album-thumb'][0];
+                        $height = $gllr_options['custom_size_px']['album-thumb'][1];
+                    }
+                    $post_arr = [];
+                    while ( $second_query->have_posts() ) {
+                        $second_query->the_post();
+                        $post_arr[] = $post; ?>
+                            <div class="gl_post-title" data-id="glr_<?php echo slugify(get_the_title()); ?>">
+                                <?php the_title(); ?>
+                            </div>
+                    <?php } ?>
+                </div>
+                <div class="gl__post-image-wrap col-10">
+                    <?php if (!empty($post_arr)) {
+                        foreach ($post_arr as $post_item) {
+                            $images_id = get_post_meta( $post_item->ID, '_gallery_images', true );
+                            $posts = get_posts( array(
+                                "showposts"         =>  -1,
+                                "what_to_show"      =>  "posts",
+                                "post_status"       =>  "inherit",
+                                "post_type"         =>  "attachment",
+                                "post_mime_type"    =>  "image/jpeg,image/gif,image/jpg,image/png",
+                                'post__in'          => explode( ',', $images_id ),
+                                'meta_key'          => '_gallery_order_' . $post_item->ID
+                            ));
+                            if ( count( $posts ) > 0 ) {
+                                $count_image_block = 0; ?>
+                                <div class="gallery" id="glr_<?php echo slugify($post_item->post_title); ?>">
+                                    <div class="gllr_image_row row">
+                                        <?php foreach ( $posts as $attachment ) {
+                                            $image_attributes = wp_get_attachment_image_src( $attachment->ID, $gllr_options['image_size_photo'] );
+                                            $image_attributes_large = wp_get_attachment_image_src( $attachment->ID, 'large' );
+                                            $image_attributes_full = wp_get_attachment_image_src( $attachment->ID, 'full' );
+
+                                            $url_for_link = get_post_meta( $attachment->ID, 'gllr_link_url', true );
+                                            $image_text = get_post_meta( $attachment->ID, 'gllr_image_text', true );
+                                            $image_alt_tag = get_post_meta( $attachment->ID, 'gllr_image_alt_tag', true );
+
+                                             ?>
+                                                <div class="gllr_image_block">
+                                                    <?php if ( ! empty( $url_for_link ) ) { ?>
+                                                        <a href="<?php echo $url_for_link; ?>" title="<?php echo $image_text; ?>" target="_blank">
+                                                            <img alt="<?php echo $image_alt_tag; ?>" title="<?php echo $image_text; ?>" src="<?php echo $image_attributes[0]; ?>" />
+                                                        </a>
+                                                    <?php } else { ?>
+                                                        <a data-fancybox="gallery_fancybox<?php if ( 0 == $gllr_options['single_lightbox_for_multiple_galleries'] ) echo '_' . $post->ID; ?>" href="<?php echo $image_attributes_large[0]; ?>" title="<?php echo $image_text; ?>" >
+                                                            <img alt="<?php echo $image_alt_tag; ?>" title="<?php echo $image_text; ?>" src="<?php echo $image_attributes[0]; ?>" rel="<?php echo $image_attributes_full[0]; ?>" />
+                                                        </a>
+                                                    <?php } ?>
+                                                    <?php if ( 1 == $gllr_options["image_text"] ) { ?>
+                                                        <div <?php if ( $width ) echo 'style="width:' . ( $width + $border_images ) . 'px;"'; ?> class="gllr_single_image_text"><?php echo $image_text; ?>&nbsp;</div>
+                                                    <?php } ?>
+                                                </div><!-- .gllr_image_block -->
+                                            
+                                            <?php $count_image_block++;
+                                        } ?>
+                                        
+                                    </div><!-- .gllr_image_row -->
+                                </div><!-- .gallery.clearfix -->
+                            <?php }
+                            }
+                    } ?>
+                </div>
+            <?php } ?>
+        </ul>
+
+        <?php $count_all_albums = $second_query->found_posts;
+        wp_reset_query();
+        $request = $wp_query->request;
+        $pages = intval( $count_all_albums / $per_page );
+        if ( $count_all_albums % $per_page > 0 )
+            $pages += 1;
+        $range = 100;
+        if ( ! $pages ) {
+            $pages = 1;
+        }
+        return array(
+            'second_query'  => $second_query,
+            'pages'         => $pages,
+            'paged'         => $paged,
+            'per_page'      => $per_page,
+            'range'         => $range
+        );
+    }
+}
+
+
+
+
+
+if (! function_exists('slugify')) {
+    function slugify($text)
+    {
+      // replace non letter or digits by -
+      $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+      // transliterate
+      $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+      // remove unwanted characters
+      $text = preg_replace('~[^-\w]+~', '', $text);
+
+      // trim
+      $text = trim($text, '-');
+
+      // remove duplicate -
+      $text = preg_replace('~-+~', '-', $text);
+
+      // lowercase
+      $text = strtolower($text);
+
+      if (empty($text)) {
+        return 'n-a';
+      }
+
+      return $text;
+    }
+}
+
 ?>
