@@ -13558,6 +13558,13 @@ a.text-gray-dark:hover {
   background: #869791;
 }
 
+@font-face {
+  font-family: "BigNoodleTitlingCyr";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../front-end/fonts/BigNoodleTitlingCyr/BigNoodleTitlingCyr.eot?") format("eot"), url("../front-end/fonts/BigNoodleTitlingCyr/BigNoodleTitlingCyr.woff2") format("woff2"), url("../front-end/fonts/BigNoodleTitlingCyr/BigNoodleTitlingCyr.woff") format("woff"), url("../front-end/fonts/BigNoodleTitlingCyr/BigNoodleTitlingCyr.ttf") format("truetype"), url("../front-end/fonts/BigNoodleTitlingCyr/BigNoodleTitlingCyr.svg#BigNoodleTitlingCyr") format("svg");
+}
+
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license
@@ -16126,6 +16133,8 @@ a:hover {
 .page-container {
   min-height: 100vh;
   padding-bottom: 40px;
+  background: url("../img/main_bg.png") no-repeat center center;
+  background-size: cover;
 }
 
 .single-format-standard .page-container,
@@ -16259,9 +16268,10 @@ a:hover {
 .language {
   position: relative;
   font-family: "BigNoodleTitlingCyr";
-  text-align: right;
+  cursor: pointer;
 }
 
+.language .language-current,
 .language a {
   letter-spacing: 1px;
   font-size: 18px;
@@ -16269,11 +16279,16 @@ a:hover {
   display: block;
 }
 
-.language .language-dropdown {
-  display: none;
+.language ul {
   position: absolute;
-  top: 15px;
-  left: 10px;
+  padding: 0;
+  margin: 0;
+  top: 20px;
+  left: 0px;
+}
+
+.language ul li {
+  display: none;
 }
 
 .lang-item {
@@ -16759,6 +16774,141 @@ body.admin-bar .mobileMenuWrap {
 
 .page-template-page-contact-php .post-title {
   padding-bottom: 15px;
+}
+
+.info {
+  margin-top: 15px;
+}
+
+.contact-info {
+  text-align: center;
+  margin: 5px 0 0 0;
+}
+
+.social-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.social-info__item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 25px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.5);
+  color: #000;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.social-info__item:last-child {
+  margin-right: 0;
+}
+
+.social-info__item .fa {
+  color: #000;
+}
+
+.social-info__item:active,
+.social-info__item:visited,
+.social-info__item:focus {
+  text-decoration: none;
+}
+
+.social-info__item:hover {
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+}
+
+.page-template-page-contact-php .title-wrap {
+  margin-top: 40px;
+}
+
+.riders-title {
+  margin-top: 40px;
+}
+
+.riders {
+  margin-top: 15px;
+}
+
+.riders__subtitle {
+  text-align: center;
+}
+
+.riders .buttons_wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.riders__button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.5);
+  color: #000;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.riders__button:last-child {
+  margin-right: 0;
+}
+
+.riders__button .fa {
+  color: #000;
+}
+
+.riders__button:active,
+.riders__button:visited,
+.riders__button:focus {
+  text-decoration: none;
+}
+
+.riders__button:hover {
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+}
+
+.partners-wrapper {
+  margin-top: 15px;
+}
+
+.search_empty {
+  text-align: center;
+  margin-top: 10%;
 }
 
 @media (min-width: 992px) {

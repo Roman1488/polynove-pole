@@ -49,7 +49,7 @@
                                 </li>
                                 <?php endwhile; ?>
                                 </ul>
-                                <a class="composition-detail" href="#">Детальніше</a>
+                                <a class="composition-detail" href="#"><?php pll_e('Details'); ?></a>
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,7 @@
         <div class="col-12">
             <div class="content-wrapper">
                 <div class="title-wrap title-wrap--center group-title-wrap">
-                    <h3 class="post-title">Історія гурту</h3>
+                    <h3 class="post-title"><?php pll_e('History of the band'); ?></h3>
                 </div>
                 <div class="post-content">
                 <?php the_content(); ?>

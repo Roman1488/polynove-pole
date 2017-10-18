@@ -41,7 +41,7 @@
                         <div class="img-container">
                             <?php echo get_the_post_thumbnail($randomPost->ID,'post-thumbnail'); ?>
                             <div class="read-more-wrapper">
-                                <div class="text">Read more</div>
+                                <div class="text"><?php pll_e('Read more'); ?></div>
                             </div>
                         </div>
                         <h3 class="related-post-item__title"><?php echo $randomPost->post_title; ?></h3>

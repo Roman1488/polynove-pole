@@ -17,6 +17,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php $currentLang = pll_current_language('slug'); ?>
 <?php if(!is_front_page()) : ?>
 <div class="mobileMenuWrap">
     <i class="fa fa-times closeMobileMenu" aria-hidden="true"></i>
@@ -51,9 +52,10 @@
                                     </div><!-- .navigation -->
                                 <?php endif; ?>
                             </div>
-                            <form action="#" type="get" class="search-form col-auto col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
+                            <form action="<?php echo home_url( '/' ) ?>" role="search" type="get" class="search-form col-auto col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
                                 <div class="input-wrapper">
-                                    <input type="search" class="search-form__input" placeholder="Пошук">
+                                    <input type="hidden" value="1" name="sentence" />
+                                    <input type="search" class="search-form__input" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="<?php pll_e('search'); ?>">
                                     <i class="fa fa-search search-icon" aria-hidden="true"></i>
                                 </div>
                             </form>
@@ -64,11 +66,14 @@
                                 </a>
                             </div>
                             <div class="language col-auto col-4 col-sm-4 col-md-2 col-lg-1 col-xl-1">
-                                <a class="language-item language-current" href="#">UKR</a>
-                                <div class="language-dropdown">
-                                    <a class="language-item" href="#">eng</a>
-                                    <a class="language-item" href="#">рус</a>
-                                </div>
+                                <span class="language-item language-current"> <?php echo pll_current_language('slug'); ?></span>
+                                    <ul>
+                                        <?php pll_the_languages(array(
+                                            'hide_current' => 1,
+                                            'slug' => 1
+                                        ));
+                                        ?>
+                                    </ul>
                             </div>
                             <div class="menu-btn-wrap col-4 col-sm-4 col-md-2">
                                 <span class="open-menu-btn">

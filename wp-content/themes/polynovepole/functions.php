@@ -115,7 +115,16 @@ function new_excerpt_more($more) {
     global $post;
     return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Read the full article...</a>';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+//add_filter('excerpt_more', 'new_excerpt_more');
+
+function SearchFilter($query) {
+    if ($query->is_search) {
+        $query->set('post_type', 'post');
+    }
+    return $query;
+}
+
+add_filter('pre_get_posts','SearchFilter');
 
 add_action('init', 'register_discography_post_types');
 function register_discography_post_types(){
@@ -162,4 +171,17 @@ if( function_exists('acf_add_options_page') ) {
         'redirect'		=> false
     ));
 }
+
+// Translations
+pll_register_string( 'Пошук', 'search' );
+pll_register_string( 'Контакти', 'Contacts' );
+pll_register_string( 'Райдери', 'Riders' );
+pll_register_string( 'Технічний райдер', 'Technical rider' );
+pll_register_string( 'Організаційний райдер', 'Organizational rider' );
+pll_register_string( 'Друзі та партнери', 'Friends and partners' );
+pll_register_string( 'Читати більше', 'Read more' );
+pll_register_string( 'Детальніше', 'Details' );
+pll_register_string( 'Історія гурту', 'History of the band' );
+pll_register_string( 'Результати пошуку', 'Search result' );
+pll_register_string( 'Нічого не знайдено', 'Nothing was found' );
 ?>

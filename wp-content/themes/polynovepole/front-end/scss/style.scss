@@ -3,7 +3,7 @@
 @import "../libs/components-font-awesome/scss/font-awesome";
 @import "../libs/owl.carousel/src/scss/owl.carousel";
 @import "../libs/owl.carousel/src/scss/owl.theme.default";
-//@import "fonts";
+@import "fonts";
 @import "animate";
 body {
   position: relative;
@@ -17,6 +17,8 @@ a:hover {
 .page-container {
   min-height: 100vh;
   padding-bottom: 40px;
+  background: url("../img/main_bg.png") no-repeat center center;
+  background-size: cover;
 }
 .single-format-standard,
 .page-template-page-news-php {
@@ -138,18 +140,24 @@ a:hover {
 .language {
   position: relative;
   font-family: "BigNoodleTitlingCyr";
-  text-align: right;
+  cursor: pointer;
+  .language-current,
   a {
     letter-spacing: 1px;
     font-size: 18px;
     color: #fff;
     display: block;
   }
-  .language-dropdown {
-    display: none;
+  ul {
     position: absolute;
-    top: 15px;
-    left: 10px;
+    padding: 0;
+    margin: 0;
+    top: 20px;
+    left: 0px;
+
+    li {
+      display: none;
+    }
   }
 }
 .lang-item {
@@ -556,5 +564,99 @@ body.admin-bar {
   .post-title {
     padding-bottom: 15px;
   }
+}
+.info {
+  margin-top: 15px;
+}
+.contact-info {
+  text-align: center;
+  margin: 5px 0 0 0;
+
+}
+.social-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+
+  &__item {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 25px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
+    transition: 0.3s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    .fa {
+      color: #000;
+    }
+    &:active, &:visited, &:focus {
+      text-decoration: none;
+    }
+    &:hover{
+      text-decoration: none;
+      color: #000;
+      background-color: #fff;
+    }
+  }
+}
+.page-template-page-contact-php {
+  .title-wrap {
+    margin-top: 40px;
+  }
+}
+.riders-title {
+  margin-top: 40px;
+}
+.riders {
+  margin-top: 15px;
+  &__subtitle {
+    text-align: center;
+  }
+  .buttons_wrap {
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
+    transition: 0.3s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    .fa {
+      color: #000;
+    }
+    &:active, &:visited, &:focus {
+      text-decoration: none;
+    }
+    &:hover{
+      text-decoration: none;
+      color: #000;
+      background-color: #fff;
+    }
+  }
+}
+.partners-wrapper {
+  margin-top: 15px;
+}
+.search_empty {
+  text-align: center;
+  margin-top: 10%;
 }
 @import "media";

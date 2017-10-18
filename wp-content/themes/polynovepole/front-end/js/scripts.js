@@ -41,7 +41,7 @@ jQuery( document ).ready(function($) {
         $('.open-menu-btn').removeClass('active');
     });
     $('.language').on('click',function () { //Функція для відккриття списку мов
-        $(this).find('.language-dropdown').toggle();
+        $(this).find('ul li').toggle();
     });
     $('.close-social-sidebar').on('click', function () {
         $(this).toggleClass('closed');
