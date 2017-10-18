@@ -41,6 +41,7 @@ gulp.task('scripts', function() {
         'libs/bootstrap/dist/js/bootstrap.min.js',
         'libs/owl.carousel/dist/owl.carousel.min.js',
         'libs/wow/dist/wow.min.js',
+        'js/fancybox.js',
         'js/scripts.js'
         ])
         .pipe(concat('scripts.js'))

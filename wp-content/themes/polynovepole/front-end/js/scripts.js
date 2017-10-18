@@ -79,6 +79,8 @@ jQuery( document ).ready(function($) {
         target.addClass('playing').siblings().removeClass('playing');
         audio = target.find('audio').get(0);
         audio.play();
-    })
+    });
 
+
+    $('.gallery_box .gllr_image_block a').fancybox();
 });
