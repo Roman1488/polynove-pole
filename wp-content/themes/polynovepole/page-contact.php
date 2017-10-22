@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-8 col-xl-8">
-                <div class="title-wrap title-wrap--center discography-title">
+                <div class="title-wrap title-wrap--gray title-wrap--center discography-title">
                     <h3 class="post-title"><?php pll_e('Contacts'); ?></h3>
                 </div>
                 <div class="info">
@@ -39,13 +39,13 @@
                         </a>
                     <?php endif; ?>
                 </div>
-                <div class="title-wrap title-wrap--center">
+                <div class="title-wrap title-wrap--gray title-wrap--center">
                     <h3 class="post-title"><?php pll_e('Riders'); ?></h3>
                 </div>
                 <div class="riders">
                     <div class="row">
                         <?php if(get_field('technical_rider') != '') : ?>
-                        <div class="col-6">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <h3 class="riders__subtitle"><?php pll_e('Technical rider'); ?></h3>
                             <div class="buttons_wrap">
                                 <a href="<?php echo get_field('technical_rider'); ?>" target="_blank" class="riders__button">
@@ -58,7 +58,7 @@
                         </div>
                         <?php endif; ?>
                         <?php if(get_field('organizational_rider') != '') : ?>
-                        <div class="col-6">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <h3 class="riders__subtitle"><?php pll_e('Organizational rider'); ?></h3>
                             <div class="buttons_wrap">
                                 <a href="<?php echo get_field('organizational_rider'); ?>" target="_blank" class="riders__button">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="partners">
-                    <div class="title-wrap title-wrap--center">
+                    <div class="title-wrap title-wrap--gray title-wrap--center">
                         <h3 class="post-title"><?php pll_e('Friends and partners'); ?></h3>
                     </div>
                         <div class="partners-wrapper">

@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php get_template_part('audio-template');  ?>
 <div class="front-page">
     <div class="container">
         <div class="row justify-content-center">

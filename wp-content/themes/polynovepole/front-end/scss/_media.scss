@@ -38,12 +38,20 @@
   .social-sidebar-wrapper {
     max-height: 30px;
   }
+  .image-in-content {
+    width: 100%;
+  }
 }
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 768px) {
   .search-form {
     order: 1;
+  }
+  .news-item {
+    .title-wrap {
+      margin-top: 10px;
+    }
   }
   .head-page-post{
     .wp-post-image {
@@ -63,8 +71,11 @@
 
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991px) {
-  .menu-wrap {
+  .header {
     display: none;
+  }
+  .mobile-header{
+    display: block;
   }
   .open-menu-btn {
     display: inline-block;

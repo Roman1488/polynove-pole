@@ -232,8 +232,8 @@ if ( ! function_exists( 'gllr_template_content_custom' ) ) {
         <div class="gallery_wrap row">
 
             <?php if ( $second_query->have_posts() ) { ?>
-
-                <div class="gl__post-title-wrap col-2">
+            <div class="col-2 years_wrap">
+                <div class="gl__post-title-wrap">
                     <?php
                     /* get width and height for image_size_album */
                     if ( 'album-thumb' != $gllr_options['image_size_album'] ) {
@@ -243,7 +243,7 @@ if ( ! function_exists( 'gllr_template_content_custom' ) ) {
                         $width  = $gllr_options['custom_size_px']['album-thumb'][0];
                         $height = $gllr_options['custom_size_px']['album-thumb'][1];
                     }
-                    $post_arr = [];
+                    $post_arr = array();
                     while ( $second_query->have_posts() ) {
                         $second_query->the_post();
                         $post_arr[] = $post; ?>
@@ -252,6 +252,7 @@ if ( ! function_exists( 'gllr_template_content_custom' ) ) {
                             </div>
                     <?php } ?>
                 </div>
+            </div>
                 <div class="gl__post-image-wrap col-10">
                     <?php if (!empty($post_arr)) {
                         foreach ($post_arr as $post_item) {

@@ -6,7 +6,7 @@
 <?php get_header(); ?>
     <div class="container">
         <div class="content-wrapper">
-        <div class="row align-items-center">
+        <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
                 <?php
                 $args = array(
@@ -38,8 +38,7 @@
                         <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-6">
                             <div class="discography-info">
                                 <div class="title-wrap discography-title">
-                                    <h3 class="post-title"><?php echo $disc->post_title; ?></h3>
-                                    <p class="post-date"><?php echo get_the_date('d.m.Y', $disc->ID); ?></p>
+                                    <h3 class="post-title post-title--mb"><?php echo $disc->post_title; ?></h3>
                                 </div>
                                 <ul class="track-list">
                                 <?php while ( have_rows('compositions', $disc->ID) ) : the_row(); ?>
@@ -49,7 +48,12 @@
                                 </li>
                                 <?php endwhile; ?>
                                 </ul>
-                                <a class="composition-detail" href="#"><?php pll_e('Details'); ?></a>
+                                <span class="composition-detail-btn"><?php pll_e('Details'); ?></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="composition-detail animated fadeIn" data-wow-offset="10">
+                                <?php echo $disc->post_content; ?>
                             </div>
                         </div>
                     </div>

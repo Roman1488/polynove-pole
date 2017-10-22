@@ -27,12 +27,12 @@
                                 <a href="<?php echo get_post_permalink($post->ID); ?>">
                                     <h3 class="post-title"><?php echo $post->post_title; ?></h3>
                                 </a>
-                                <p class="post-date"><?php echo get_the_date('d.m.Y', $post->ID); ?></p>
+                               <!-- <p class="post-date"><?php /*echo get_the_date('d.m.Y', $post->ID); */?></p>-->
                             </div>
                             <section class="news-item__excerpt">
                                 <?php echo $post->post_excerpt; ?>
                             </section>
-                            <a href="<?php echo get_post_permalink($post->ID); ?>" class="read-more"><?php pll_e('Read more'); ?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a href="<?php echo get_post_permalink($post->ID); ?>" class="read-more">Read<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </article>

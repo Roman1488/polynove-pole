@@ -28,6 +28,14 @@ a:hover {
     background-size: cover;
   }
 }
+
+.page-template-gallery-template-php {
+
+  .page-container {
+    background: url("../img/gallery_bg.png") no-repeat center center;
+    background-size: cover;
+  }
+}
 .page-template-page-group-php {
 
   .page-container {
@@ -84,7 +92,7 @@ a:hover {
         font-weight: 500;
         position: relative;
         font-style: normal;
-        padding: 0 20px;
+        padding: 0 15px;
         border-right: 1px solid #fff;
         
         &:hover {
@@ -152,8 +160,8 @@ a:hover {
     position: absolute;
     padding: 0;
     margin: 0;
-    top: 20px;
-    left: 0px;
+    top: 30px;
+    right: 0;
 
     li {
       display: none;
@@ -217,7 +225,7 @@ a:hover {
   padding: 5px 10px;
   position: fixed;
   z-index: 3;
-  bottom: 100px;
+  bottom: 15px;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   transition: 0.3s;
@@ -297,10 +305,10 @@ a:hover {
 .mobileMenuWrap {
   background-color: rgba(0, 0, 0, 0.9);
   top: 0;
-  left: -286px; /* ховаємо меню */
+  left: -100%; /* ховаємо меню */
   height: 100%;
   position: fixed;
-  width: 285px;
+  width: 100%;
   z-index: 3;
   border-right: 1px solid rgba(255,255,255,0.2);
   transition: .8s;
@@ -356,6 +364,7 @@ a:hover {
     object-position: center center;
   }
 }
+
 .post-image {
   width: 100%;
   height: 100%;
@@ -397,6 +406,9 @@ a:hover {
   display: inline-block;
   border-bottom: 1px solid lightgrey;
 
+  &--gray {
+    border-bottom: 1px solid gray;
+  }
   &--center {
     display: block;
     text-align: center;
@@ -405,7 +417,7 @@ a:hover {
 .read-more {
   color: #C1C1C1;
   font-family: "BigNoodleTitlingCyr";
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 1px;
   margin-top: 10px;
   display: inline-block;
@@ -437,6 +449,8 @@ body.admin-bar {
 .group-image {
   display: block;
   margin: 15px auto;
+  width: 100%;
+  height: auto;
 }
 .discography-list {
   display: flex;
@@ -489,10 +503,13 @@ body.admin-bar {
   transition: .5s ease-in-out;
 }
 .read-more-wrapper {
-  display: none;
+  display: flex;
   position: absolute;
+  visibility: hidden;
   top: 0;
+  opacity: 0;
   bottom: 0;
+  transition: visibility 0.1s, opacity 0.3s linear;
   left: 0;
   right: 0;
   justify-content: center;
@@ -506,14 +523,14 @@ body.admin-bar {
     font-size: 40px;
     text-transform: uppercase;
     font-family: "BigNoodleTitlingCyr";
-    padding: 10px 15px;
+    padding: 0 25px;
   }
 }
 
 .related-post-item:hover {
   .read-more-wrapper {
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+    opacity: 1;
   }
   .related-post-item__title {
     color: $gold;
@@ -534,6 +551,7 @@ body.admin-bar {
 }
 .track-list {
   margin-top: 15px;
+  padding: 0 0 0 15px;
 }
 .composition {
   cursor: pointer;
@@ -547,7 +565,10 @@ body.admin-bar {
     color: $gold;
   }
 }
-.composition-detail {
+.composition-name {
+  margin-bottom: 5px;
+}
+.composition-detail-btn {
   display: inline-block;
   padding: 10px 20px;
   background: transparent;
@@ -555,10 +576,18 @@ body.admin-bar {
   text-transform: uppercase;
   border: 2px solid lightgrey;
   margin-top: 15px;
+  cursor: pointer;
   font-family: "BigNoodleTitlingCyr";
   font-size: 16px;
   transition: 0.2s;
   letter-spacing: 1px;
+}
+.composition-detail {
+  display: none;
+  margin-top: 15px;
+}
+.composition-detail.showed {
+  display: block;
 }
 .page-template-page-contact-php {
   .post-title {
@@ -658,5 +687,45 @@ body.admin-bar {
 .search_empty {
   text-align: center;
   margin-top: 10%;
+}
+.image-in-content {
+  display: block;
+  width: 40%;
+  float: left;
+  margin: 0 40px 40px 0;
+}
+.post-title--mb {
+  padding-bottom: 15px;
+}
+.mobile-header{
+  display: none;
+  padding: 10px 0;
+
+  .player {
+    text-align: center;
+  }
+  .language {
+    text-align: center;
+  }
+}
+.gl_post-title {
+  font-size: 40px;
+  text-align: center;
+  font-family: "BigNoodleTitlingCyr";
+}
+.gallery {
+  margin: 15px 0;
+  border-bottom: 1px solid gray;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.years_wrap {
+  position: relative;
 }
 @import "media";

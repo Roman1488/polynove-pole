@@ -17,24 +17,31 @@ jQuery( document ).ready(function($) {
 
     console.log( "ready!" );
     var audio = $('#player_audio').get(0),
-        playing = false;
+        globalPlaying = false;
 
-    $('#audio-control').on('click', function (event) {
+    $('.audio-control').on('click', function (event) {
         event.preventDefault();
-        if(playing == true){
+        if(globalPlaying == true){
         audio.pause();
-        playing = false;
-        $('#audio-control .fa').toggleClass('hidden');
-        } else if(playing == false){
+            globalPlaying = false;
+        $('.audio-control .fa').toggleClass('hidden');
+        } else if(globalPlaying == false){
             audio.play();
-            playing = true;
-            $('#audio-control .fa').toggleClass('hidden');
+            globalPlaying = true;
+            $('.audio-control .fa').toggleClass('hidden');
         }
     });
     $('.open-menu-btn').click(function() { // Мобільне меню
         $('.mobileMenuWrap').toggleClass('mobileMenuWrap-showed');
         $('.open-menu-btn').toggleClass('active');
     });
+
+    $('.composition-detail-btn').on('click', function () {
+        var target = $(this);
+        var detailInfo = target.parent().parent().parent().parent().find('.composition-detail');
+        detailInfo.addClass('showed');
+        target.hide('normal');
+    })
 
     $('.closeMobileMenu').click(function() {
         $('.mobileMenuWrap').removeClass('mobileMenuWrap-showed');
@@ -65,22 +72,37 @@ jQuery( document ).ready(function($) {
         activeDiscId = target.data('id');
         target.addClass('active');
         target.siblings().removeClass('active');
+
         showActiveDist();
     })
 
     $('.composition').on('click', function () {
         var target = $(this),
             playing = $('.track-list .playing').find('audio').get(0);
-        console.log(playing);
         if(playing != undefined) {
             playing.pause();
+            $('.audio-control .fa').toggleClass('hidden');
             playing.currentTime = 0;
         }
-        target.addClass('playing').siblings().removeClass('playing');
+        $('.track-list .composition').removeClass('playing');
+        target.addClass('playing');
         audio = target.find('audio').get(0);
         audio.play();
+        globalPlaying = true;
+        $('.audio-control .fa').toggleClass('hidden');
     });
 
+/*    function isVisible( row, container ){
+        var elementTop = $(row).offset().top,
+            elementHeight = $(row).height(),
+            containerTop = container.scrollTop(),
+            containerHeight = container.height();
+
+        return ((((elementTop - containerTop) + elementHeight) > 0) && ((elementTop - containerTop) < containerHeight));
+    }
+    if(isVisible('.gallery', $(window))){
+        $('.gallery').toggleClass('visable');
+    };*/
 
     $('.gallery_box .gllr_image_block a').fancybox();
 });
