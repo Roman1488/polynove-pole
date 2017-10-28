@@ -4,6 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
+<?php get_template_part('audio-template');  ?>
     <div class="container">
         <div class="content-wrapper">
         <div class="row">

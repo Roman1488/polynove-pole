@@ -4,6 +4,7 @@ Template Name: Gallery Template
 * Version: 1.2.9
 */
 get_header(); ?>
+<?php get_template_part('audio-template');  ?>
 <div id="container" class="site-content site-main container">
 	<div id="content" class="hentry">
 		<?php if ( ! post_password_required() ) { ?>
@@ -37,4 +38,5 @@ get_header(); ?>
 		<?php } ?>
 	</div><!-- .hentry -->
 </div><!-- #container -->
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -80,7 +80,13 @@
                             <div class="row">
                                 <?php while ( have_rows('partners') ) : the_row(); ?>
                                     <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 align-self-center">
-                                        <img class="img-fluid" src="<?php the_sub_field('partner_logo'); ?>" alt="Partner logo">
+                                        <?php if(get_sub_field('partner_url')){ ?>
+                                            <a target="_blank" href="<?php the_sub_field('partner_url'); ?>">
+                                        <?php }?>
+                                            <img class="img-fluid" src="<?php the_sub_field('partner_logo'); ?>" alt="Partner logo">
+                                        <?php if(get_sub_field('partner_url')){ ?>
+                                            </a>
+                                        <?php }?>
                                     </div>
                                 <?php endwhile; ?>
                             </div>

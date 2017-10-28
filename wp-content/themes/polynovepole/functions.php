@@ -2,13 +2,13 @@
 function theme_scripts()
 {
     // Register and including styles
-    wp_enqueue_style('main_style', get_template_directory_uri().'/css/style.min.css', array(), false, '');
+    wp_enqueue_style( 'bootstap', get_template_directory_uri().'/css/bootstrap.min.css' );
+    wp_enqueue_style( 'font_awesome', get_template_directory_uri().'/css/font-awesome.min.css' );
+    wp_enqueue_style('main_style', get_template_directory_uri().'/css/style.css' );
 
-    // Register and including scripts
-    //wp_deregister_script( 'jquery' );
-    //wp_register_script( 'jquery', get_theme_file_uri( 'libs/jquery/dist/jquery.min.js' ), false, null, true );
-    wp_enqueue_script( 'jquery' );
-    wp_enqueue_script('main_scripts', get_template_directory_uri().'/js/scripts.min.js', array(), false, true);
+    wp_enqueue_script( 'custom_js', get_template_directory_uri().'/js/jquery.fancybox.min.js', array( 'jquery' ), true );
+    wp_enqueue_script('main_scripts', get_template_directory_uri().'/js/scripts.min.js', array( 'jquery' ), true );
+
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 
@@ -185,6 +185,7 @@ pll_register_string( 'Детальніше', 'Details' );
 pll_register_string( 'Історія гурту', 'History of the band' );
 pll_register_string( 'Результати пошуку', 'Search result' );
 pll_register_string( 'Нічого не знайдено', 'Nothing was found' );
+pll_register_string( 'Читати', 'Read' );
 
 if ( ! function_exists( 'gllr_template_content_custom' ) ) {
     function gllr_template_content_custom() {
@@ -214,6 +215,7 @@ if ( ! function_exists( 'gllr_template_content_custom' ) ) {
             'orderby'           => $gllr_options['album_order_by'],
             'order'             => $gllr_options['album_order'],
             'posts_per_page'    => $per_page,
+            'orderby'           =>  'name',
             'paged'             => $paged
         );
 
@@ -233,7 +235,7 @@ if ( ! function_exists( 'gllr_template_content_custom' ) ) {
 
             <?php if ( $second_query->have_posts() ) { ?>
             <div class="col-2 years_wrap">
-                <div class="gl__post-title-wrap">
+                <ul class="gl__post-title-wrap">
                     <?php
                     /* get width and height for image_size_album */
                     if ( 'album-thumb' != $gllr_options['image_size_album'] ) {
@@ -247,11 +249,13 @@ if ( ! function_exists( 'gllr_template_content_custom' ) ) {
                     while ( $second_query->have_posts() ) {
                         $second_query->the_post();
                         $post_arr[] = $post; ?>
-                            <div class="gl_post-title" data-id="glr_<?php echo slugify(get_the_title()); ?>">
-                                <?php the_title(); ?>
-                            </div>
+                            <li>
+                                <a href="#glr_<?php echo slugify(get_the_title()); ?>" class="gl_post-title" data-id="glr_<?php echo slugify(get_the_title()); ?>">
+                                    <span><?php the_title(); ?></span>
+                                </a>
+                            </li>
                     <?php } ?>
-                </div>
+                </ul>
             </div>
                 <div class="gl__post-image-wrap col-10">
                     <?php if (!empty($post_arr)) {
@@ -359,4 +363,22 @@ if (! function_exists('slugify')) {
       return $text;
     }
 }
+
+function custom_logo_url ( $html ) {
+$custom_logo_id = get_theme_mod( 'custom_logo' );
+if(pll_current_language() == 'uk'){
+    $url = '/news/';
+}elseif(pll_current_language() == 'en'){
+    $url = '/en/news-2/';
+}
+$html = sprintf( '<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
+        esc_url( $url ),
+        wp_get_attachment_image( $custom_logo_id, 'full', false, array(
+            'class'    => 'custom-logo',
+        ) )
+    );
+return $html;    
+}
+add_filter( 'get_custom_logo',  'custom_logo_url' );
+
 ?>

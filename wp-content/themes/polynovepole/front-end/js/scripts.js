@@ -92,7 +92,7 @@ jQuery( document ).ready(function($) {
         $('.audio-control .fa').toggleClass('hidden');
     });
 
-/*    function isVisible( row, container ){
+    function isVisible( row, container ){
         var elementTop = $(row).offset().top,
             elementHeight = $(row).height(),
             containerTop = container.scrollTop(),
@@ -102,7 +102,7 @@ jQuery( document ).ready(function($) {
     }
     if(isVisible('.gallery', $(window))){
         $('.gallery').toggleClass('visable');
-    };*/
+    };
 
     $('.gallery_box .gllr_image_block a').fancybox();
 });

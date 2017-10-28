@@ -1,0 +1,16 @@
+[19-Oct-2017 22:34:15 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:36:04 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:36:08 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:36:18 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:36:25 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:36:28 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:37:21 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:37:25 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:39:20 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:39:22 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:39:58 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[19-Oct-2017 22:40:00 UTC] PHP Parse error:  syntax error, unexpected '[' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 246
+[24-Oct-2017 15:17:37 UTC] PHP Fatal error:  Cannot use [] for reading in /home/polynovepole/public_html/wp-content/themes/polynovepole/header.php on line 116
+[24-Oct-2017 15:18:33 UTC] PHP Fatal error:  Cannot use [] for reading in /home/polynovepole/public_html/wp-content/themes/polynovepole/header.php on line 116
+[26-Oct-2017 09:43:43 UTC] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 366
+[26-Oct-2017 09:43:55 UTC] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/polynovepole/public_html/wp-content/themes/polynovepole/functions.php on line 366

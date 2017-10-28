@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php bloginfo('name'); ?> <?php wp_title("", true); ?></title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <meta property="og:image" content="<?php echo get_template_directory_uri()?>/img/logo_black.jpg" />
     <?php wp_head(); ?>
 </head>
 
@@ -34,7 +35,7 @@
         <header class="mobile-header">
             <div class="row">
                 <div class="logo-wrap col-6	col-sm-6 col-md-6 col-lg-6">
-                    <?php if (get_custom_logo())  {
+                    <?php if (get_custom_logo()) {
                         echo get_custom_logo();
                     } ?>
                 </div>
@@ -49,7 +50,8 @@
                     <ul>
                         <?php pll_the_languages(array(
                             'hide_current' => 1,
-                            'slug' => 1
+                            'raw' => 1,
+                            'display_names_as' => 'slug'
                         ));
                         ?>
                     </ul>
@@ -105,14 +107,14 @@
                                 </a>
                             </div>
                             <div class="language col-auto col-4 col-sm-4 col-md-2 col-lg-1 col-xl-1">
-                                <span class="language-item language-current"> <?php echo pll_current_language('slug'); ?></span>
-                                    <ul>
-                                        <?php pll_the_languages(array(
-                                            'hide_current' => 1,
-                                            'slug' => 1
-                                        ));
-                                        ?>
-                                    </ul>
+                                <span class="language-item language-current">
+                                    <?php $languages = pll_the_languages(array('raw'=>1,'hide_current' => 1,)); 
+                                    foreach ($languages as $language){ ?>
+                                        <a href="<?php echo $language['url']; ?>">
+                                            <?php echo $language['name']; ?>
+                                        </a>
+                                    <?php } ?>
+                                </span>
                             </div>
                             <div class="menu-btn-wrap col-4 col-sm-4 col-md-2">
                                 <span class="open-menu-btn">
